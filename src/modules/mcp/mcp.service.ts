@@ -50,7 +50,7 @@ export class McpService implements OnModuleInit {
         tools: [
           {
             name: 'handle_call_logic',
-            description: 'কল ট্রান্সফার বা সামারি সেভ করার লজিক চেক করে',
+            description: 'Process voice call logic for transfers and summaries',
             inputSchema: {
               type: 'object',
               properties: {
@@ -84,7 +84,7 @@ export class McpService implements OnModuleInit {
 
     // Handle call transfer logic - check for urgent keywords
     if (intent === 'transfer') {
-      const urgentKeywords = ['অর্ডার', 'কথা বলতে চাই', 'জরুরি', 'agent'];
+      const urgentKeywords = ['order', 'talk to agent', 'urgent', 'agent'];
       const shouldTransfer = urgentKeywords.some((key) =>
         transcript?.toLowerCase().includes(key),
       );
