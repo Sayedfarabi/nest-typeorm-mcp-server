@@ -21,6 +21,7 @@
     "typeorm": "typeorm-ts-node-esm"
   },
   "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.25.3",
     "@nestjs/cache-manager": "^3.0.1",
     "@nestjs/common": "^11.0.1",
     "@nestjs/config": "^4.0.2",

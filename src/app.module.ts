@@ -8,6 +8,7 @@ import databaseConfig from './config/database.config';
 import { UserModule } from './modules/user/user.module';
 import { AdminModule } from './modules/admin/admin.module';
 import { DataSource } from 'typeorm';
+import { McpModule } from './modules/mcp/mcp.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { DataSource } from 'typeorm';
     CacheModule.register(),
     UserModule,
     AdminModule,
+    McpModule,
   ],
   controllers: [AppController],
   providers: [AppService],
