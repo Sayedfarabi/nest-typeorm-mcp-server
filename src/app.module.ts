@@ -1,12 +1,13 @@
 import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CacheModule } from '@nestjs/cache-manager';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import databaseConfig from './config/database.config';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './modules/user/user.module';
 import { AdminModule } from './modules/admin/admin.module';
+import { DataSource } from 'typeorm';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { AdminModule } from './modules/admin/admin.module';
       envFilePath: '.env',
     }),
     TypeOrmModule.forRootAsync({
+      inject: [ConfigService],
       useFactory: databaseConfig,
     }),
     CacheModule.register(),
@@ -24,4 +26,6 @@ import { AdminModule } from './modules/admin/admin.module';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(private dataSource: DataSource) {}
+}
